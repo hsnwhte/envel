@@ -1,0 +1,46 @@
+# --- Secrets / credentials (kesinlikle commit edilmeyecek) ---
+.env
+.env.*
+!.env.example
+credentials.json
+token.json
+*.token.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.installed.cfg
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Test / coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# --- Envel çıktıları (geçici/normalize edilmiş veri) ---
+data/*
+!data/.gitkeep
+*.db
+*.sqlite3
+
+# --- IDE: PyCharm ---
+.idea/
+
+# --- IDE: VS Code ---
+.vscode/
+!.vscode/extensions.json
+
+# --- OS ---
+.DS_Store
+Thumbs.db
