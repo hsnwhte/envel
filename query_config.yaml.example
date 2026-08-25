@@ -1,0 +1,66 @@
+# query_config.yaml.example
+# Copy this file to query_config.yaml and adjust to your own searches.
+# query_config.yaml is gitignored — it may reflect your personal search
+# strategy, so it stays local rather than being committed.
+#
+# Fields are source-agnostic: each Connector (Gmail, Graph, IMAP) translates
+# the same fields into its own native query syntax. All fields except
+# "name" are optional — fill in whichever ones apply to your search.
+
+queries:
+  - name: "query config unique name"
+    # Unique identifier for this search definition. Used to reference
+    # which search a given result came from (e.g. in reports/logs).
+    # This is the only required field — everything else is optional.
+
+    sender:
+      # Match messages sent from any of these addresses or keywords.
+      # A message matches if it comes from ANY entry in the list.
+      - "sender keyword or email 1"
+      - "sender keyword or email 2"
+
+    receiver:
+      # Match messages sent to any of these addresses or keywords
+      # (useful if you receive alerts on multiple aliases/accounts).
+      - "receiver keyword or email 1"
+      - "receiver keyword or email 2"
+
+    subject_contains:
+      # Match messages whose subject line contains any of these phrases.
+      - "subject topic piece 1"
+      - "subject topic piece 2"
+
+    body_contains:
+      # Match messages whose body contains any of these phrases.
+      # Note: not all connectors support body search efficiently —
+      # see each Connector's docstring for details.
+      - "body text piece 1"
+      - "body text piece 2"
+
+    tags:
+      # Source-agnostic grouping mechanism. Each Connector maps this
+      # to its own native concept: Gmail label, Graph category,
+      # or IMAP mailbox/folder.
+      - "tag 1"
+      - "tag 2"
+
+    before: "YYYY-MM-DD"
+    # Only match messages received before this date (exclusive).
+
+    after: "YYYY-MM-DD"
+    # Only match messages received after this date (exclusive).
+
+    is_read: false
+    # true  -> only already-read messages
+    # false -> only unread messages
+    # omit this field entirely to match both
+
+    is_starred: false
+    # true  -> only starred/flagged messages
+    # false -> only non-starred messages
+    # omit this field entirely to match both
+
+    has_attachments: false
+    # true  -> only messages with at least one attachment
+    # false -> only messages with no attachments
+    # omit this field entirely to match both

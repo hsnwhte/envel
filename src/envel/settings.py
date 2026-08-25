@@ -19,18 +19,17 @@ DEFAULT_CREDENTIALS_PATH = RUNTIME_ROOT / "data" / "auth" / "credentials.json"
 CREDENTIALS_PATH = Path(
     os.environ.get("ENVEL_CREDENTIALS_PATH", DEFAULT_CREDENTIALS_PATH)
 )
-CREDENTIALS_PATH.mkdir(parents=True, exist_ok=True)
+CREDENTIALS_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 DEFAULT_TOKEN_PATH = RUNTIME_ROOT / "data" / "auth" / "token.json"
 TOKEN_PATH = Path(os.environ.get("ENVEL_TOKEN_PATH", DEFAULT_TOKEN_PATH))
-TOKEN_PATH.mkdir(parents=True, exist_ok=True)
+TOKEN_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 # ----- Query Config
-DEFAULT_QUERY_CONFIG_PATH = RUNTIME_ROOT / "data" / "query_config.yaml"
+DEFAULT_QUERY_CONFIG_PATH = RUNTIME_ROOT / "query_config.yaml"
 QUERY_CONFIG_PATH = Path(
     os.environ.get("ENVEL_QUERY_CONFIG_PATH", DEFAULT_QUERY_CONFIG_PATH)
 )
-QUERY_CONFIG_PATH.mkdir(parents=True, exist_ok=True)
 
 # ----- Logs
 DEFAULT_LOG_DIR = RUNTIME_ROOT / "data" / "logs" / "envel"
@@ -42,6 +41,11 @@ DEFAULT_RAW_OUTPUT_DIR = RUNTIME_ROOT / "data" / "output" / "envel"
 RAW_OUTPUT_DIR = Path(os.environ.get("ENVEL_RAW_OUTPUT_DIR", DEFAULT_RAW_OUTPUT_DIR))
 RAW_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-
 # --- System variables
 NORMALIZED_FORMAT = ContentFormat.JSON
+SUPPORTED_MAIL_SOURCES = ["gmail", "graph", "imap"]
+
+# --- Service Provider Scopes
+DEFAULT_GMAIL_SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+GMAIL_SCOPES = os.environ.get("ENVEL_GMAIL_SCOPES")
+GMAIL_SCOPES = GMAIL_SCOPES.split(",") if GMAIL_SCOPES else DEFAULT_GMAIL_SCOPES

@@ -5,6 +5,9 @@
 credentials.json
 token.json
 *.token.json
+query_config.yaml
+!query_config.yaml.example
+
 
 # --- Python ---
 __pycache__/

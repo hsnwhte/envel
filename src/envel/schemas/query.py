@@ -1,13 +1,13 @@
 from datetime import date
 from typing import ClassVar
-from pydantic import BaseModel, Field, field_validator, model_validator
 
+from pydantic import BaseModel, Field
 
 
 class SearchQuery(BaseModel):
     name: str
-    sender: str | None
-    receiver: str | None
+    sender: list[str] = Field(default_factory=list)
+    receiver: list[str] = Field(default_factory=list)
     subject_contains: list[str] = Field(default_factory=list)
     body_contains: list[str]= Field(default_factory=list)
     tags: list[str] = Field(default_factory=list)

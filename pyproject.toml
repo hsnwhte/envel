@@ -1,6 +1,6 @@
 [project]
 name = "envel"
-version = "0.1.0"
+version = "0.2.0"
 description = "Connects to mail sources (Gmail, Microsoft Graph, IMAP), fetches raw messages, and normalizes them into a unified Envelope model — using Pluggle as its transform engine."
 readme = "README.md"
 requires-python = ">=3.14"
@@ -24,6 +24,7 @@ dependencies = [
     "google-auth-httplib2",
     "google-auth-oauthlib",
     "msal",
+    "pyyaml"
 ]
 
 [project.optional-dependencies]
